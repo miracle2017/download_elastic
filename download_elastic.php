@@ -40,7 +40,7 @@ foreach ($products as $k => $product_name) {
         if (false !== ($key = array_search($currentVersion, $m[2]))) {
             $updateVersion[$product_name][$os_name] = (string)$m[2][0];
             if (empty($downloadList = array_splice($m[1], 0, $key))) {
-                echo "current version is Newest." . PHP_EOL;
+                echo "current version is newest." . PHP_EOL;
                 continue;
             }
             foreach ($downloadList as $download_key => $url) {
