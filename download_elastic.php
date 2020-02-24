@@ -13,17 +13,21 @@ $baseReg = '#"url"[^"]*"(http[^"]*?%s-((\d*|\.)*)-%s-[^"]*?)"#';
 $products = ['elasticsearch', 'kibana'];
 $OS = ['windows', 'linux', 'darwin'];
 
-if ($versionLogJson = @file_get_contents('./version.log')) {
-    try {
-        $version = json_decode($versionLogJson, true);
-    } catch (Exception $e) {
-        var_dump($e);
-        die('json_decode fail');
+$version = [];
+if (file_exists('./version.log')) {
+    if ($versionLogJson = file_get_contents('./version.log')) {
+        try {
+            $version = json_decode($versionLogJson, true);
+        } catch (Exception $e) {
+            var_dump($e);
+            die('json_decode fail');
+        }
+    } else {
+        var_dump(error_get_last());
+        die("get version.log fail");
     }
-} else {
-    var_dump(error_get_last());
-    die("get version.log fail");
 }
+
 
 //$page = `curl $url`;
 $page = file_get_contents('./t.html');
