@@ -6,7 +6,7 @@
  * Time: 13:18
  */
 
-echo PHP_EOL . '------ start at ' . date('Y-m-d H:i:s') . '------' . PHP_EOL;
+echo PHP_EOL . '------ start at ' . date('Y-m-d H:i:s') . ' ------' . PHP_EOL;
 $url = 'https://www.elastic.co/cn/downloads/past-releases';
 $baseReg = '#"url"[^"]*"(http[^"]*?%s-((\d*|\.)*)-%s-[^"]*?)"#';
 
@@ -40,8 +40,8 @@ foreach ($products as $k => $product_name) {
         if (false !== ($key = array_search($currentVersion, $m[2]))) {
             $updateVersion[$product_name][$os_name] = (string)$m[2][0];
             if (empty($downloadList = array_splice($m[1], 0, $key))) {
-                echo "current version is Newest.";
-                break;
+                echo "current version is Newest." . PHP_EOL;
+                continue;
             }
             foreach ($downloadList as $download_key => $url) {
                 `cd d && wget $url`;
@@ -50,7 +50,7 @@ foreach ($products as $k => $product_name) {
         } else {
             echo 'current version is not in pages';
         }
-        echo "-----" . PHP_EOL;
+        echo PHP_EOL;
     }
 }
 
