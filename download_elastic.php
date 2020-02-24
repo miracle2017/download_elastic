@@ -29,8 +29,7 @@ if (file_exists('./version.log')) {
 }
 
 
-//$page = `curl $url`;
-$page = file_get_contents('./t.html');
+$page = `curl $url`;
 $updateVersion = [];
 foreach ($products as $k => $product_name) {
     foreach ($OS as $os_key => $os_name) {
