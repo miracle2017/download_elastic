@@ -56,4 +56,4 @@ foreach ($products as $k => $product_name) {
 
 $saveVersion = json_encode($updateVersion, JSON_UNESCAPED_UNICODE);
 file_put_contents('./version.log', $saveVersion);
-die(PHP_EOL . "--- the end ---" . PHP_EOL);
+die("--- end at " . date('Y-m-d H:i:s') . " ---" . PHP_EOL);
