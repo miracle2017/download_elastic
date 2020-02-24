@@ -48,7 +48,7 @@ foreach ($products as $k => $product_name) {
             }
             var_dump($downloadList);
         } else {
-            var_dump('current version is not in pages');
+            echo 'current version is not in pages';
         }
         echo "-----" . PHP_EOL;
     }
