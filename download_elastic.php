@@ -36,7 +36,8 @@ foreach ($products as $k => $product_name) {
         $currentVersion = $version[$product_name][$os_name] ?? "7.6.0";
         if (false !== ($key = array_search($currentVersion, $m[2]))) {
             if (empty($downloadList = array_splice($m[1], 0, $key))) {
-                die("current version is Newest");
+                echo "current version is Newest.";
+                break;
             }
             foreach ($downloadList as $download_key => $url) {
                 `cd d && wget $url`;
