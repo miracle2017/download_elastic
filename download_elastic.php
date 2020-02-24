@@ -13,7 +13,7 @@ $baseReg = '#"url"[^"]*"(http[^"]*?%s-((\d*|\.)*)-%s-[^"]*?)"#';
 $products = ['elasticsearch', 'kibana'];
 $OS = ['windows', 'linux', 'darwin'];
 
-if ($versionLogJson = file_get_contents('./version.log')) {
+if ($versionLogJson = @file_get_contents('./version.log')) {
     try {
         $version = json_decode($versionLogJson, true);
     } catch (Exception $e) {
@@ -35,6 +35,7 @@ foreach ($products as $k => $product_name) {
         $re = preg_match_all($reg, $page, $m);
         $currentVersion = $version[$product_name][$os_name] ?? "7.6.0";
         if (false !== ($key = array_search($currentVersion, $m[2]))) {
+            $updateVersion[$product_name][$os_name] = (string)$m[2][0];
             if (empty($downloadList = array_splice($m[1], 0, $key))) {
                 echo "current version is Newest.";
                 break;
@@ -42,7 +43,6 @@ foreach ($products as $k => $product_name) {
             foreach ($downloadList as $download_key => $url) {
                 `cd d && wget $url`;
             }
-            $updateVersion[$product_name][$os_name] = (string)$m[2][0];
             var_dump($downloadList);
         } else {
             var_dump('current version is not in pages');
