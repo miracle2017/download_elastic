@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2020/2/21
- * Time: 13:18
  */
 
 echo PHP_EOL . '------ start at ' . date('Y-m-d H:i:s') . ' ------' . PHP_EOL;
@@ -29,7 +27,7 @@ if (file_exists('./version.log')) {
 }
 
 
-$page = `curl $url`;
+$page = `curl --user-agent 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' $url`;
 $updateVersion = [];
 foreach ($products as $k => $product_name) {
     foreach ($OS as $os_key => $os_name) {
