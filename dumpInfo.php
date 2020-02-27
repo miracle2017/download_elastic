@@ -31,6 +31,7 @@ if (file_exists('./version.log')) {
 //$page = `curl --user-agent 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' $url`;
 $page = file_get_contents('./t.html');
 $updateVersion = [];
+$elastic7 = [];
 foreach ($products as $k => $product_name) {
     foreach ($OS as $os_key => $os_name) {
         echo "$product_name-$os_name:";
@@ -39,7 +40,9 @@ foreach ($products as $k => $product_name) {
         $currentVersion = $version[$product_name][$os_name] ?? "7.6.0";
         if (false !== ($key = array_search($currentVersion, $m[2]))) {
             $updateVersion[$product_name][$os_name] = (string)$m[2][0];
-            var_dump(sort($m[1]));
+            arsort($m[1]);
+            var_dump($m[1]);
+            $elastic7[$os_name] = $m[1];
 //            if (empty($downloadList = array_splice($m[1], $key + 1))) {
 //                echo "current version is newest." . PHP_EOL;
 //                continue;
@@ -52,6 +55,7 @@ foreach ($products as $k => $product_name) {
         echo PHP_EOL;
     }
 }
+file_put_contents('./elastic7', var_export($elastic7,true));
 
 //logstash
 echo "logstash:";
