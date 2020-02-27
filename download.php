@@ -35,7 +35,7 @@ foreach ($merge as $version => $value) {
         echo "$version:" . PHP_EOL;
         foreach ($value as $url) {
             echo "|--$url" . PHP_EOL;
-            `cd d && wget --user-agent='Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'  $url`;
+            `cd d && wget --user-agent='Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36' -nc -t 10 $url`;
         }
     }
 }
