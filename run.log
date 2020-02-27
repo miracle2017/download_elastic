@@ -1,0 +1,26 @@
+
+------ start at 2020-02-27 17:07:02 ------
+elasticsearch-windows:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+elasticsearch-linux:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+elasticsearch-darwin:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+kibana-windows:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+kibana-linux:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+kibana-darwin:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:42:
+bool(true)
+
+logstash:C:\Users\Administrator\Desktop\download_elastic\dumpInfo.php:65:
+array(1) {
+  [0] =>
+  string(69) "https://artifacts.elastic.co/downloads/logstash/logstash-7.6.0.tar.gz"
+}
+--- end at 2020-02-27 17:07:02 ---
