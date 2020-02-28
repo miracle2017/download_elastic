@@ -22,7 +22,7 @@ if (file_exists('./version.log')) {
         }
     } else {
         var_dump(error_get_last());
-        die("get version.log fail");
+        die("get version log fail");
     }
 }
 
